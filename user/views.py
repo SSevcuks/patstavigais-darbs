@@ -57,9 +57,6 @@ class EditUserView(View):
 
         user = User.objects.get(id=user_id)
 
-        context = {
-            'user': user,
-        }
         username = request.POST['name']
         email = request.POST['email']
 
@@ -71,10 +68,8 @@ class EditUserView(View):
 
         user.save()
 
-        return render(
-            template_name='user1.html',
-            request=request,
-            context=context,
-        )
+        return HttpResponse(f"<p>Username: <strong>{username}"
+                            f"</strong><br><br>E-mail: {email}</p>")
+
 
 
